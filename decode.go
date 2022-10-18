@@ -159,3 +159,36 @@ type NHTSADecodeFlatResponseResult struct {
 	Wheels                              string `json:"Wheels"`
 	Windows                             string `json:"Windows"`
 }
+
+type NHTSADecodeResponse struct {
+	Count          int64                       `json:"Count"`
+	Message        string                      `json:"Message"`
+	SearchCriteria string                      `json:"SearchCriteria"`
+	Results        []NHTSADecodeResponseResult `json:"Results"`
+}
+
+type NHTSADecodeResponseResult struct {
+	Value      string `json:"Value"`
+	ValueID    string `json:"ValueId"`
+	Variable   string `json:"Variable"`
+	VariableID int64  `json:"VariableId"`
+}
+
+type NHTSADecodeWmiResponse struct {
+	Count          int64                          `json:"Count"`
+	Message        string                         `json:"Message"`
+	SearchCriteria string                         `json:"SearchCriteria"`
+	Results        []NHTSADecodeWmiResponseResult `json:"Results"`
+}
+
+type NHTSADecodeWmiResponseResult struct {
+	CommonName            string      `json:"CommonName"`
+	CreatedOn             string      `json:"CreatedOn"`
+	DateAvailableToPublic string      `json:"DateAvailableToPublic"`
+	Make                  string      `json:"Make"`
+	ManufacturerName      string      `json:"ManufacturerName"`
+	ParentCompanyName     string      `json:"ParentCompanyName"`
+	URL                   string      `json:"URL"`
+	UpdatedOn             interface{} `json:"UpdatedOn"`
+	VehicleType           string      `json:"VehicleType"`
+}
