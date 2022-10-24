@@ -1,6 +1,7 @@
 package nhtsa
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -8,7 +9,7 @@ import (
 
 var nhtsaBaseUrl = "https://vpic.nhtsa.dot.gov/api/vehicles"
 
-func doRequest(rUrl string) (*[]byte, error) {
+func doRequest[T any](rUrl string) (*T, error) {
 	req, err := http.NewRequest(http.MethodGet, rUrl, nil)
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %s", err)
@@ -28,5 +29,12 @@ func doRequest(rUrl string) (*[]byte, error) {
 		return nil, fmt.Errorf("error reading response body: %s", err)
 	}
 
-	return &resBody, nil
+	var resJson T
+
+	jsonErr := json.Unmarshal(resBody, &resJson)
+	if jsonErr != nil {
+		return nil, fmt.Errorf("error unmarshalling response: %s", jsonErr)
+	}
+
+	return &resJson, nil
 }
