@@ -1,20 +1,25 @@
 package nhtsa
 
-type NHTSADecodeResponse[T any] struct {
+type VinRequest struct {
+	Vin  string
+	Year string
+}
+
+type DecodeResponse[T any] struct {
 	Count          int64  `json:"Count"`
 	Message        string `json:"Message"`
 	SearchCriteria string `json:"SearchCriteria"`
 	Results        []T    `json:"Results"`
 }
 
-type NHTSADecodeResponseResult struct {
+type DecodeResponseResult struct {
 	Value      string `json:"Value"`
 	ValueID    string `json:"ValueId"`
 	Variable   string `json:"Variable"`
 	VariableID int64  `json:"VariableId"`
 }
 
-type NHTSADecodeWmiResponseResult struct {
+type DecodeWmiResponseResult struct {
 	CommonName            string      `json:"CommonName"`
 	CreatedOn             string      `json:"CreatedOn"`
 	DateAvailableToPublic string      `json:"DateAvailableToPublic"`
@@ -26,7 +31,7 @@ type NHTSADecodeWmiResponseResult struct {
 	VehicleType           string      `json:"VehicleType"`
 }
 
-type NHTSADecodeFlatResponseResult struct {
+type DecodeFlatResponseResult struct {
 	ABS                                 string `json:"ABS"`
 	ActiveSafetySysNote                 string `json:"ActiveSafetySysNote"`
 	AdaptiveCruiseControl               string `json:"AdaptiveCruiseControl"`
