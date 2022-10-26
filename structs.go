@@ -194,3 +194,8 @@ type GetWmiResult struct {
 	VehicleType           string      `json:"VehicleType"`
 	WMI                   string      `json:"WMI"`
 }
+
+type GetAllMakesResult struct {
+	MakeId   int64  `json:"Make_ID"`
+	MakeName string `json:"Make_Name"`
+}
