@@ -7,8 +7,8 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-func DecodeVin(request *VinRequest) (*BaseApiResponse[DecodeVinResult], error) {
-	reqUrl := fmt.Sprintf("%s/decodevin/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
+func DecodeVin(r *VinRequest) (*BaseApiResponse[DecodeVinResult], error) {
+	reqUrl := fmt.Sprintf("%s/decodevin/%s?format=json&modelyear=%s", nhtsaBaseUrl, r.Vin, r.Year)
 
 	res, err := doRequest[BaseApiResponse[DecodeVinResult]](reqUrl)
 	if err != nil {
@@ -18,8 +18,8 @@ func DecodeVin(request *VinRequest) (*BaseApiResponse[DecodeVinResult], error) {
 	return res, nil
 }
 
-func DecodeVinFlat(request *VinRequest) (*BaseApiResponse[DecodeFlatResult], error) {
-	reqUrl := fmt.Sprintf("%s/decodevinvalues/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
+func DecodeVinFlat(r *VinRequest) (*BaseApiResponse[DecodeFlatResult], error) {
+	reqUrl := fmt.Sprintf("%s/decodevinvalues/%s?format=json&modelyear=%s", nhtsaBaseUrl, r.Vin, r.Year)
 
 	res, err := doRequest[BaseApiResponse[DecodeFlatResult]](reqUrl)
 	if err != nil {
@@ -29,8 +29,8 @@ func DecodeVinFlat(request *VinRequest) (*BaseApiResponse[DecodeFlatResult], err
 	return res, nil
 }
 
-func DecodeVinExtended(request *VinRequest) (*BaseApiResponse[DecodeVinResult], error) {
-	reqUrl := fmt.Sprintf("%s/decodevinvaluesextended/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
+func DecodeVinExtended(r *VinRequest) (*BaseApiResponse[DecodeVinResult], error) {
+	reqUrl := fmt.Sprintf("%s/decodevinvaluesextended/%s?format=json&modelyear=%s", nhtsaBaseUrl, r.Vin, r.Year)
 
 	res, err := doRequest[BaseApiResponse[DecodeVinResult]](reqUrl)
 	if err != nil {
@@ -40,8 +40,8 @@ func DecodeVinExtended(request *VinRequest) (*BaseApiResponse[DecodeVinResult], 
 	return res, nil
 }
 
-func DecodeVinFlatExtended(request *VinRequest) (*BaseApiResponse[DecodeFlatResult], error) {
-	reqUrl := fmt.Sprintf("%s/decodevinvaluesextended/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
+func DecodeVinFlatExtended(r *VinRequest) (*BaseApiResponse[DecodeFlatResult], error) {
+	reqUrl := fmt.Sprintf("%s/decodevinvaluesextended/%s?format=json&modelyear=%s", nhtsaBaseUrl, r.Vin, r.Year)
 
 	res, err := doRequest[BaseApiResponse[DecodeFlatResult]](reqUrl)
 	if err != nil {
