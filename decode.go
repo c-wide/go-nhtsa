@@ -7,10 +7,10 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-func DecodeVin(request *VinRequest) (*DecodeResponse[DecodeResponseResult], error) {
+func DecodeVin(request *VinRequest) (*BaseApiResponse[DecodeVinResult], error) {
 	reqUrl := fmt.Sprintf("%s/decodevin/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
 
-	res, err := doRequest[DecodeResponse[DecodeResponseResult]](reqUrl)
+	res, err := doRequest[BaseApiResponse[DecodeVinResult]](reqUrl)
 	if err != nil {
 		return nil, fmt.Errorf("error decoding VIN: %s", err)
 	}
@@ -18,10 +18,10 @@ func DecodeVin(request *VinRequest) (*DecodeResponse[DecodeResponseResult], erro
 	return res, nil
 }
 
-func DecodeVinFlat(request *VinRequest) (*DecodeResponse[DecodeFlatResponseResult], error) {
+func DecodeVinFlat(request *VinRequest) (*BaseApiResponse[DecodeFlatResult], error) {
 	reqUrl := fmt.Sprintf("%s/decodevinvalues/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
 
-	res, err := doRequest[DecodeResponse[DecodeFlatResponseResult]](reqUrl)
+	res, err := doRequest[BaseApiResponse[DecodeFlatResult]](reqUrl)
 	if err != nil {
 		return nil, fmt.Errorf("error decoding VIN: %s", err)
 	}
@@ -29,10 +29,10 @@ func DecodeVinFlat(request *VinRequest) (*DecodeResponse[DecodeFlatResponseResul
 	return res, nil
 }
 
-func DecodeVinExtended(request *VinRequest) (*DecodeResponse[DecodeResponseResult], error) {
+func DecodeVinExtended(request *VinRequest) (*BaseApiResponse[DecodeVinResult], error) {
 	reqUrl := fmt.Sprintf("%s/decodevinvaluesextended/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
 
-	res, err := doRequest[DecodeResponse[DecodeResponseResult]](reqUrl)
+	res, err := doRequest[BaseApiResponse[DecodeVinResult]](reqUrl)
 	if err != nil {
 		return nil, fmt.Errorf("error decoding VIN: %s", err)
 	}
@@ -40,10 +40,10 @@ func DecodeVinExtended(request *VinRequest) (*DecodeResponse[DecodeResponseResul
 	return res, nil
 }
 
-func DecodeVinFlatExtended(request *VinRequest) (*DecodeResponse[DecodeFlatResponseResult], error) {
+func DecodeVinFlatExtended(request *VinRequest) (*BaseApiResponse[DecodeFlatResult], error) {
 	reqUrl := fmt.Sprintf("%s/decodevinvaluesextended/%s?format=json&modelyear=%s", nhtsaBaseUrl, request.Vin, request.Year)
 
-	res, err := doRequest[DecodeResponse[DecodeFlatResponseResult]](reqUrl)
+	res, err := doRequest[BaseApiResponse[DecodeFlatResult]](reqUrl)
 	if err != nil {
 		return nil, fmt.Errorf("error decoding VIN: %s", err)
 	}
@@ -51,10 +51,10 @@ func DecodeVinFlatExtended(request *VinRequest) (*DecodeResponse[DecodeFlatRespo
 	return res, nil
 }
 
-func DecodeWmi(wmi string) (*DecodeResponse[DecodeWmiResponseResult], error) {
+func DecodeWmi(wmi string) (*BaseApiResponse[DecodeWmiResult], error) {
 	reqUrl := fmt.Sprintf("%s/decodewmi/%s?format=json", nhtsaBaseUrl, wmi)
 
-	res, err := doRequest[DecodeResponse[DecodeWmiResponseResult]](reqUrl)
+	res, err := doRequest[BaseApiResponse[DecodeWmiResult]](reqUrl)
 	if err != nil {
 		return nil, fmt.Errorf("error decoding WMI: %s", err)
 	}
@@ -66,10 +66,10 @@ func DecodeWmi(wmi string) (*DecodeResponse[DecodeWmiResponseResult], error) {
 //
 // per above FAQ, it's best to use standard decode
 // APIs when processing large amounts of VINs.
-func DecodeVinBatch(vList *[]VinRequest) (*[]DecodeFlatResponseResult, error) {
+func DecodeVinBatch(vList *[]VinRequest) (*[]DecodeFlatResult, error) {
 	g := new(errgroup.Group)
 
-	retList := make([]DecodeFlatResponseResult, len(*vList))
+	retList := make([]DecodeFlatResult, len(*vList))
 
 	for vIdx, vInfo := range *vList {
 		vIdx := vIdx

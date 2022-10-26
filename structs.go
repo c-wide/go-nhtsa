@@ -5,21 +5,21 @@ type VinRequest struct {
 	Year string
 }
 
-type DecodeResponse[T any] struct {
-	Count          int64  `json:"Count"`
-	Message        string `json:"Message"`
-	SearchCriteria string `json:"SearchCriteria"`
-	Results        []T    `json:"Results"`
+type BaseApiResponse[T any] struct {
+	Count          int64       `json:"Count"`
+	Message        string      `json:"Message"`
+	SearchCriteria interface{} `json:"SearchCriteria"`
+	Results        []T         `json:"Results"`
 }
 
-type DecodeResponseResult struct {
+type DecodeVinResult struct {
 	Value      string `json:"Value"`
 	ValueID    string `json:"ValueId"`
 	Variable   string `json:"Variable"`
 	VariableID int64  `json:"VariableId"`
 }
 
-type DecodeWmiResponseResult struct {
+type DecodeWmiResult struct {
 	CommonName            string      `json:"CommonName"`
 	CreatedOn             string      `json:"CreatedOn"`
 	DateAvailableToPublic string      `json:"DateAvailableToPublic"`
@@ -31,7 +31,7 @@ type DecodeWmiResponseResult struct {
 	VehicleType           string      `json:"VehicleType"`
 }
 
-type DecodeFlatResponseResult struct {
+type DecodeFlatResult struct {
 	ABS                                 string `json:"ABS"`
 	ActiveSafetySysNote                 string `json:"ActiveSafetySysNote"`
 	AdaptiveCruiseControl               string `json:"AdaptiveCruiseControl"`
@@ -182,4 +182,15 @@ type DecodeFlatResponseResult struct {
 	WheelSizeRear                       string `json:"WheelSizeRear"`
 	Wheels                              string `json:"Wheels"`
 	Windows                             string `json:"Windows"`
+}
+
+type GetWmiResult struct {
+	Country               interface{} `json:"Country"`
+	CreatedOn             string      `json:"CreatedOn"`
+	DateAvailableToPublic string      `json:"DateAvailableToPublic"`
+	ID                    int64       `json:"Id"`
+	Name                  string      `json:"Name"`
+	UpdatedOn             interface{} `json:"UpdatedOn"`
+	VehicleType           string      `json:"VehicleType"`
+	WMI                   string      `json:"WMI"`
 }
