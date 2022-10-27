@@ -11,12 +11,12 @@ func GetParts(r *PartsRequest) (*BaseApiResponse[GetPartsResult], error) {
 
 	queryParams := url.Values{}
 
-	v := reflect.ValueOf(r)
-	typeOfS := v.Type()
+	rV := reflect.ValueOf(*r)
+	rT := rV.Type()
 
-	for i := 0; i < v.NumField(); i++ {
-		if v.Field(i).Interface() != "" {
-			queryParams.Add(typeOfS.Field(i).Name, v.Field(i).Interface().(string))
+	for i := 0; i < rV.NumField(); i++ {
+		if rV.Field(i).Interface() != "" {
+			queryParams.Add(rT.Field(i).Name, rV.Field(i).Interface().(string))
 		}
 	}
 
