@@ -13,6 +13,15 @@ type PartsRequest struct {
 	Page         string
 }
 
+type ManufacturerType struct {
+	Name string `json:"Name"`
+}
+
+type ManufacturerVehicleType struct {
+	IsPrimary bool   `json:"IsPrimary"`
+	Name      string `json:"Name"`
+}
+
 type BaseApiResponse[T any] struct {
 	Count          int64       `json:"Count"`
 	Message        string      `json:"Message"`
@@ -218,4 +227,40 @@ type GetPartsResult struct {
 	Name             string      `json:"Name"`
 	Type             string      `json:"Type"`
 	URL              string      `json:"URL"`
+}
+
+type GetAllManufacturersResult struct {
+	Country      string                    `json:"Country"`
+	CommonName   string                    `json:"Mfr_CommonName"`
+	ID           int64                     `json:"Mfr_ID"`
+	Name         string                    `json:"Mfr_Name"`
+	VehicleTypes []ManufacturerVehicleType `json:"VehicleTypes"`
+}
+
+type GetManufacturerDetailsResult struct {
+	Address                  string                    `json:"Address"`
+	Address2                 string                    `json:"Address2"`
+	City                     string                    `json:"City"`
+	ContactEmail             string                    `json:"ContactEmail"`
+	ContactFax               interface{}               `json:"ContactFax"`
+	ContactPhone             string                    `json:"ContactPhone"`
+	Country                  string                    `json:"Country"`
+	DBAs                     string                    `json:"DBAs"`
+	EquipmentItems           []interface{}             `json:"EquipmentItems"`
+	LastUpdated              string                    `json:"LastUpdated"`
+	ManufacturerTypes        []ManufacturerType        `json:"ManufacturerTypes"`
+	MfrCommonName            string                    `json:"Mfr_CommonName"`
+	MfrID                    int64                     `json:"Mfr_ID"`
+	MfrName                  string                    `json:"Mfr_Name"`
+	OtherManufacturerDetails string                    `json:"OtherManufacturerDetails"`
+	PostalCode               string                    `json:"PostalCode"`
+	PrimaryProduct           interface{}               `json:"PrimaryProduct"`
+	PrincipalFirstName       string                    `json:"PrincipalFirstName"`
+	PrincipalLastName        interface{}               `json:"PrincipalLastName"`
+	PrincipalPosition        string                    `json:"PrincipalPosition"`
+	StateProvince            string                    `json:"StateProvince"`
+	SubmittedName            string                    `json:"SubmittedName"`
+	SubmittedOn              string                    `json:"SubmittedOn"`
+	SubmittedPosition        string                    `json:"SubmittedPosition"`
+	VehicleTypes             []ManufacturerVehicleType `json:"VehicleTypes"`
 }
