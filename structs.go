@@ -277,3 +277,10 @@ type GetMakeManufacturerNameYearResult struct {
 	MfrID    int64  `json:"MfrId"`
 	MfrName  string `json:"MfrName"`
 }
+
+type GetMakeVehicleTypeNameResult struct {
+	MakeID          int64  `json:"MakeId"`
+	MakeName        string `json:"MakeName"`
+	VehicleTypeID   int64  `json:"VehicleTypeId"`
+	VehicleTypeName string `json:"VehicleTypeName"`
+}
