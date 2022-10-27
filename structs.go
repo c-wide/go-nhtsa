@@ -301,3 +301,10 @@ type GetEquipmentPlantCodesResult struct {
 	StateProvince interface{} `json:"StateProvince"`
 	Status        string      `json:"Status"`
 }
+
+type GetModelsResult struct {
+	MakeID    int64  `json:"Make_ID"`
+	MakeName  string `json:"Make_Name"`
+	ModelID   int64  `json:"Model_ID"`
+	ModelName string `json:"Model_Name"`
+}
