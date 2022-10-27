@@ -264,3 +264,9 @@ type GetManufacturerDetailsResult struct {
 	SubmittedPosition        string                    `json:"SubmittedPosition"`
 	VehicleTypes             []ManufacturerVehicleType `json:"VehicleTypes"`
 }
+
+type GetMakeManufacturerNameResult struct {
+	ID       int64  `json:"Make_ID"`
+	MakeName string `json:"Make_Name"`
+	MfrName  string `json:"Mfr_Name"`
+}

@@ -33,7 +33,18 @@ func GetManufacturerDetails(mfr string) (*BaseApiResponse[GetManufacturerDetails
 
 	res, err := doRequest[BaseApiResponse[GetManufacturerDetailsResult]](reqUrl)
 	if err != nil {
-		return nil, fmt.Errorf("error getting WMI: %s", err)
+		return nil, fmt.Errorf("error getting manufacturer details: %s", err)
+	}
+
+	return res, nil
+}
+
+func GetMakesForManufacturer(mfr string) (*BaseApiResponse[GetMakeManufacturerNameResult], error) {
+	reqUrl := fmt.Sprintf("%s/GetMakeForManufacturer/%s?format=json", nhtsaBaseUrl, mfr)
+
+	res, err := doRequest[BaseApiResponse[GetMakeManufacturerNameResult]](reqUrl)
+	if err != nil {
+		return nil, fmt.Errorf("error getting manufacturer makes: %s", err)
 	}
 
 	return res, nil
