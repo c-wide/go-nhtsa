@@ -289,3 +289,15 @@ type VehicleTypeIdResult struct {
 	VehicleTypeID   int64  `json:"VehicleTypeId"`
 	VehicleTypeName string `json:"VehicleTypeName"`
 }
+
+type GetEquipmentPlantCodesResult struct {
+	Address       interface{} `json:"Address"`
+	City          interface{} `json:"City"`
+	Country       string      `json:"Country"`
+	DotCode       string      `json:"DOTCode"`
+	Name          string      `json:"Name"`
+	OldDotCode    string      `json:"OldDotCode"`
+	PostalCode    interface{} `json:"PostalCode"`
+	StateProvince interface{} `json:"StateProvince"`
+	Status        string      `json:"Status"`
+}
