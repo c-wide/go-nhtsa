@@ -5,6 +5,14 @@ type VinRequest struct {
 	Year string
 }
 
+type PartsRequest struct {
+	Type         string
+	FromDate     string
+	ToDate       string
+	Manufacturer string
+	Page         string
+}
+
 type BaseApiResponse[T any] struct {
 	Count          int64       `json:"Count"`
 	Message        string      `json:"Message"`
@@ -198,4 +206,16 @@ type GetWmiResult struct {
 type GetAllMakesResult struct {
 	MakeId   int64  `json:"Make_ID"`
 	MakeName string `json:"Make_Name"`
+}
+
+type GetPartsResult struct {
+	CoverLetterURL   string      `json:"CoverLetterURL"`
+	LetterDate       string      `json:"LetterDate"`
+	ManufacturerID   int64       `json:"ManufacturerId"`
+	ManufacturerName string      `json:"ManufacturerName"`
+	ModelYearFrom    interface{} `json:"ModelYearFrom"`
+	ModelYearTo      interface{} `json:"ModelYearTo"`
+	Name             string      `json:"Name"`
+	Type             string      `json:"Type"`
+	URL              string      `json:"URL"`
 }
