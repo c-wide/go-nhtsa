@@ -49,3 +49,14 @@ func GetMakesForManufacturer(mfr string) (*BaseApiResponse[GetMakeManufacturerNa
 
 	return res, nil
 }
+
+func GetMakesForManufacturerWithYear(mfr string, year string) (*BaseApiResponse[GetMakeManufacturerNameYearResult], error) {
+	reqUrl := fmt.Sprintf("%s/GetMakesForManufacturerAndYear/%s?year=%s&format=json", nhtsaBaseUrl, mfr, year)
+
+	res, err := doRequest[BaseApiResponse[GetMakeManufacturerNameYearResult]](reqUrl)
+	if err != nil {
+		return nil, fmt.Errorf("error getting manufacturer makes: %s", err)
+	}
+
+	return res, nil
+}
