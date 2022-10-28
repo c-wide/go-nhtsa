@@ -308,3 +308,17 @@ type GetModelsResult struct {
 	ModelID   int64  `json:"Model_ID"`
 	ModelName string `json:"Model_Name"`
 }
+
+type GetVehicleVariableResult struct {
+	DataType    string `json:"DataType"`
+	Description string `json:"Description"`
+	GroupName   string `json:"GroupName"`
+	ID          int64  `json:"ID"`
+	Name        string `json:"Name"`
+}
+
+type GetVehicleVariableValuesResult struct {
+	ElementName string `json:"ElementName"`
+	ID          int64  `json:"Id"`
+	Name        string `json:"Name"`
+}
