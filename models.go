@@ -23,3 +23,41 @@ func GetModelsForMakeById(mId string) (*BaseApiResponse[GetModelsResult], error)
 
 	return res, nil
 }
+
+func GetModelsForMakeComboByName(mName string, year string, vType string) (*BaseApiResponse[GetModelsResult], error) {
+	reqUrl := fmt.Sprintf("%s/GetModelsForMakeYear/make/%s", nhtsaBaseUrl, mName)
+
+	if year != "" {
+		reqUrl += "/modelyear/" + year
+	}
+
+	if vType != "" {
+		reqUrl += "/vehicletype/" + vType
+	}
+
+	res, err := doRequest[BaseApiResponse[GetModelsResult]](reqUrl + "?format=json")
+	if err != nil {
+		return nil, fmt.Errorf("error getting models: %s", err)
+	}
+
+	return res, nil
+}
+
+func GetModelsForMakeComboById(mId string, year string, vType string) (*BaseApiResponse[GetModelsResult], error) {
+	reqUrl := fmt.Sprintf("%s/GetModelsForMakeIdYear/makeId/%s", nhtsaBaseUrl, mId)
+
+	if year != "" {
+		reqUrl += "/modelyear/" + year
+	}
+
+	if vType != "" {
+		reqUrl += "/vehicletype/" + vType
+	}
+
+	res, err := doRequest[BaseApiResponse[GetModelsResult]](reqUrl + "?format=json")
+	if err != nil {
+		return nil, fmt.Errorf("error getting models: %s", err)
+	}
+
+	return res, nil
+}
