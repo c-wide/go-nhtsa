@@ -13,6 +13,13 @@ type PartsRequest struct {
 	Page         string
 }
 
+type CAVehicleSpecRequest struct {
+	Year  string
+	Make  string
+	Model string
+	Units string
+}
+
 type ManufacturerType struct {
 	Name string `json:"Name"`
 }
@@ -321,4 +328,9 @@ type GetVehicleVariableValuesResult struct {
 	ElementName string `json:"ElementName"`
 	ID          int64  `json:"Id"`
 	Name        string `json:"Name"`
+}
+
+type GetCAVehicleSpecsResult struct {
+	Name  string `json:"Name"`
+	Value string `json:"Value"`
 }
